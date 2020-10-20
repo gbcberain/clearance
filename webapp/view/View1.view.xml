@@ -1,0 +1,65 @@
+<mvc:View controllerName="zhr_clearance.zclearance.controller.View1" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	displayBlock="true" xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="idClearanceForm1"  title="Employee Details" minWidth="1024" maxContainerCols="2" editable="true"
+							layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="2" emptySpanM="0" columnsL="2" columnsM="2"
+							class="editableForm sapUiLeaveInfo">
+							<f:content>
+								<Label text="Employee Number" required="true"/>
+								<Input id="idEmpid" value="" submit="onSubmit" placeholder="Enter Employee ID"></Input>
+								<Label text="Employee Name"/>
+								<Text id="idName" text="{/Name}" ></Text>
+								<Label text="Position"/>
+								<Text text="{/Jobtitle}" id="idPosition"></Text>
+								<Label text="Department"/>
+								<Text text="{/Department}" id="idDept"></Text>
+								<Label text="Area"/>
+								<Text text="{/Zarea}" id="idArea"></Text>
+								<Label text="Company"/>
+								<Text text="{/Zcompany}" id="idComp"></Text>
+						</f:content>
+					</f:SimpleForm>
+					</VBox>
+					<VBox>
+					<f:SimpleForm id="idClearanceForm2" title="Reason for Clearance" minWidth="1024" maxContainerCols="2" editable="true"
+							layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4" emptySpanL="2" emptySpanM="0" columnsL="2" columnsM="2"
+							class="editableForm sapUiLeaveInfo">
+						<f:content>
+							<Label text="Reason for clearance" required="true"/>
+							<ComboBox id="CB" items="{ path: '/clearanceReasonsSet', sorter: { path: 'Zitem' } }" selectionChange="onChange">
+								<c:ListItem key="{Zitem}" text="{Zdescription}"/>
+							</ComboBox>
+							<!--<ComboBox id="CB"   selectionChange="onChange">
+									<items>
+									<c:ListItem key="1" text="ANNUAL LEAVE"/>
+									<c:ListItem key="2" text="test2"/>
+									<c:ListItem key="3" text="test3"/>
+									<c:ListItem key="4" text="test4"/>
+									</items>
+								</ComboBox>-->
+							<!--<Select id="country" selectedKey="{Country}">
+									<items>
+										<core:Item text="Annual Leave" key="1"/>
+										<core:Item text="Emergency Leave" key="2"/>
+										<core:Item text="Resignation" key="3"/>
+										<core:Item text="End of Contract" key="4"/>
+										<core:Item text="Other" key="5"/>
+									</items>
+								</Select>-->
+							<Label text="Last Working Date" required="true"/>
+							<DatePicker id="DP1" valueFormat="yyyy-MM-dd" displayFormat="long" displayFormatType="Gregorian" change="handleChange"/>
+							<ToolbarSpacer/>
+							<Button type="Accept" text="Submit" press="onSave"></Button>
+							<ToolbarSpacer/>
+						</f:content>
+					</f:SimpleForm>
+				</VBox>
+			</content>
+		</Page>
+	</pages>
+</App>
+</mvc:View>
